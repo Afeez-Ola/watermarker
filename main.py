@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
 import cv2
@@ -26,7 +26,6 @@ def watermarkAdder():
     alpha_channel = watermark_cv[:, :, 3]
 
     alpha_mask = alpha_channel / 255.0
-    product_copy = product.copy()
 
     for c in range(0, 3):
         product[position[1]:position[1] + watermark_height, position[0]:position[0] + watermark_width, c] = \
@@ -39,7 +38,7 @@ def watermarkAdder():
     print(f"Watermark successfully added to {output_file}")
 
 
-def browseFile(title,filetype):
+def browseFile(title, filetype):
     filename = filedialog.askopenfilename(initialdir="/",
                                           title=title,
                                           filetypes=filetype)
@@ -49,21 +48,14 @@ def browseFile(title,filetype):
 app = tk.Tk()
 app.title("Watermark Adder")
 
-# Create a label for the watermark text
 watermark_label = tk.Label(app, text="Watermark Text:")
 watermark_label.pack()
-
-# Create an entry field for the watermark text
-watermark_entry = tk.Entry(app)
-watermark_entry.pack()
 
 label_file_explorer = tk.Label(app,
                                text="File Explorer using Tkinter \nSelect your image first and then select the logo. \nYou can do this by clicking on 'Add Watermark' button!",
                                width=100, height=4, fg="blue")
 label_file_explorer.pack()
-# Create a button to add the watermark
 add_button = tk.Button(app, text="Add Watermark", command=watermarkAdder)
 add_button.pack()
 
-# Run the application
 app.mainloop()
