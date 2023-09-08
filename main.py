@@ -48,6 +48,7 @@ def browseFile(title, filetype):
 app = tk.Tk()
 app.title("Watermark Adder")
 
+# Create a label for the watermark text
 watermark_label = tk.Label(app, text="Watermark Text:")
 watermark_label.pack()
 
@@ -55,7 +56,9 @@ label_file_explorer = tk.Label(app,
                                text="File Explorer using Tkinter \nSelect your image first and then select the logo. \nYou can do this by clicking on 'Add Watermark' button!",
                                width=100, height=4, fg="blue")
 label_file_explorer.pack()
+# Create a button to add the watermark
 add_button = tk.Button(app, text="Add Watermark", command=watermarkAdder)
 add_button.pack()
 
+# Run the application
 app.mainloop()
